@@ -1,0 +1,22 @@
+---
+- name: buid images fluentd
+  docker_image:
+    name: fluentd_images
+    build: 
+      path: /home/chung/fluentd
+    source: build
+
+- name: run container fluentd
+  docker_container:
+    name: "{{container_name}}"
+    image: "{{ docker_images }}"
+    volumes: 
+      - /home/chung/fluentd/conf:/fluentd/etc/
+    state: started
+    networks:
+      - name: my-network
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+
+
