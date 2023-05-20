@@ -1,6 +1,6 @@
 import unittest
 import requests
-
+import time
 API_URL = "http://localhost:80/api"
 class TestApp(unittest.TestCase):
 
@@ -20,7 +20,7 @@ class TestApp(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(responseJson["id"], "100")
-
+        time.sleep(1)
         requests.get("http://localhost:80/api/delete/100")
 
     def test_update_data_api(self):
@@ -34,7 +34,7 @@ class TestApp(unittest.TestCase):
             "major": "dtvt"
         }
         response = requests.post("http://localhost:80/api/update/", json=data)
-
+        time.sleep(1)
         responseJson = response.json()
 
         self.assertEqual(response.status_code, 200)
