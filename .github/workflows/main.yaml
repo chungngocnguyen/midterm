@@ -19,9 +19,9 @@ jobs:
           sudo docker build -t mongo_image roles/db/files                                                                                                                                                         
           sudo docker run -d --name mongo_server --network my-network mongo_image
           sudo docker build -t api_image roles/api/files   
-          sudo docker run -d --name api_server --network my-network api_image
+          sudo docker run -d --name flask --network my-network api_image
           sudo docker build -t web_image roles/web/files 
-          sudo docker run -d -p 80:80 --link api_server:flask --network my-network web_image
+          docker run -d -p 80:80 --name nginx --link flask:flask --network my-network web_image
       
       - name: Test api
         run:  python3 test_api.py
