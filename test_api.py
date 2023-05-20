@@ -21,7 +21,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(responseJson["id"], "100")
 
-        requests.get("http://localhost/api/delete/100")
+        requests.get("http://localhost:80/api/delete/100")
 
     def test_update_data_api(self):
         data = {
@@ -33,7 +33,7 @@ class TestApp(unittest.TestCase):
             "university": "PTIT",
             "major": "dtvt"
         }
-        response = requests.post("http://localhost/api/update/", json=data)
+        response = requests.post("http://localhost:80/api/update/", json=data)
 
         responseJson = response.json()
 
@@ -41,13 +41,13 @@ class TestApp(unittest.TestCase):
         self.assertEqual(responseJson["id"], "100")
 
     def test_read_data_api(self):
-        response = requests.get("http://localhost/api/read/15")
+        response = requests.get("http://localhost:80/api/read/15")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()[0]['id'], '15')
 
     def test_delete_data_api(self):
-        response = requests.get("http://localhost/api/delete/0")
+        response = requests.get("http://localhost:80/api/delete/0")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.text, "Delete successfully")
 
