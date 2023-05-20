@@ -1,9 +1,8 @@
 import unittest
 import requests
 
-
+API_URL = "http://localhost:80/api"
 class TestApp(unittest.TestCase):
-
 
     def test_insert_data_api(self):
         data = {
@@ -15,7 +14,7 @@ class TestApp(unittest.TestCase):
             "university": "PTIT",
             "major": "dtvt"
         }
-        response = requests.post("http://localhost/api/create/", json=data)
+        response = requests.post(f"{API_URL}/create/", json=data)
 
         responseJson = response.json()
 
