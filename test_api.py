@@ -47,7 +47,7 @@ class TestApp(unittest.TestCase):
     def test_delete_data_api(self):
         response = requests.get("http://localhost:80/api/delete/0")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.text, "<h1 style='text-align:center; color: blue'>Delete succesfully. Reload the home page to see the differences!</h1>")
+        self.assertEqual(response.text, "Delete successfully")
 
 if __name__ == '__main__':
     unittest.main()
