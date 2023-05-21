@@ -6,7 +6,7 @@ services:
       - my_network
     ports:  
       - 27017:27017
-  flask_app:
+  flask_server:
     build: ./roles/api/files
     networks: 
      - my_network
@@ -17,7 +17,7 @@ services:
     networks: 
     - my_network
     depends_on:
-      - "flask_app"
+      - "flask_server"
     ports:
       - 80:80
 networks:
