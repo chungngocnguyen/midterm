@@ -22,19 +22,19 @@ jobs:
         with:  
           context: roles/db/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mongodb:${{ github.ref_slug }}
+          tags: chungnguyenngoc/mongodb-midterm:${{github.ref_name}}
       
       - name: Build and Push Docker Image web
         uses: docker/build-push-action@v2
         with:  
           context: roles/web/files
           push: true
-          tags: $${{ secrets.DOCKERHUB_USERNAME }}/web:${{ github.ref_slug }}
+          tags: chungnguyenngoc/web-midterm:${{github.ref_name}}
       
       - name: Build and Push Docker Image api
         uses: docker/build-push-action@v2
         with:  
           context: roles/api/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/api:${{ github.ref_slug }}
+          tags: chungnguyenngoc/api-midterm:${{github.ref_name}}
       
