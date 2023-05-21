@@ -3,8 +3,6 @@ global:
   evaluation_interval: 15s
   external_labels:
     monitor: 'Project-technical-report'
-  # remote_write:
-  #   - url: "http://27.66.108.93:9090/api/v1/write"
 
 alerting:
   alertmanagers:
@@ -36,3 +34,6 @@ scrape_configs:
     honor_labels: true
     static_configs:
     - targets: ['192.168.52.135:8080']
+
+remote_write:
+  - url: "http://27.66.108.93:9090/api/v1/write"

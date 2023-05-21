@@ -23,9 +23,12 @@ jobs:
           sudo docker build -t nginx_image roles/web/files
           sudo docker run -d -p 80:80 --name nginx --link flask:flask --network my-network nginx_image
       
-      - name: Install requests library
-        run: pip install requests
+      - name: check container
+        run: sudo docker ps 
 
+      - name: sleep container 
+        run: sleep 5      
+        
       - name: Test api
         run:  python3 test_api.py
 
