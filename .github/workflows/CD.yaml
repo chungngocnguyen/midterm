@@ -2,7 +2,7 @@ name: CD
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 
 jobs:
   build:
@@ -22,19 +22,19 @@ jobs:
         with:  
           context: roles/db/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_service:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_mongodb:${{ github.ref }}
       
       - name: Build and Push Docker Image web
         uses: docker/build-push-action@v2
         with:  
           context: roles/web/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_service:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_web:${{ github.ref }}
       
       - name: Build and Push Docker Image api
         uses: docker/build-push-action@v2
         with:  
           context: roles/api/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_service:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_api:${{ github.ref }}
       
