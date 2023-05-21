@@ -18,9 +18,9 @@
     name: my_db
     source: "build"
 
-- name: Build the mongodb-server container from the my_db image
+- name: Build the web_mongo
   docker_container:
-    name: mongodb-server
+    name: web_mongo
     image: my_db
     networks:
       - name: my-network

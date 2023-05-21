@@ -5,7 +5,7 @@ import os
 import json
 
 app = Flask(__name__)
-client = MongoClient("mongodb://mongodb-server:27017/")
+client = MongoClient("mongodb://web_mongo:27017/")
 db = client["internees"]
 
 def insert_data(id = '', name= '', username= '', birth = '', sex = '', university = '', major = ''):
