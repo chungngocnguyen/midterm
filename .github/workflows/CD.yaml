@@ -22,19 +22,19 @@ jobs:
         with:  
           context: roles/db/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_mongodb:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_mongodb:${{ github.ref_slug }}
       
       - name: Build and Push Docker Image web
         uses: docker/build-push-action@v2
         with:  
           context: roles/web/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_web:${{ github.ref }}
+          tags: $${{ secrets.DOCKERHUB_USERNAME }}/my_web:${{ github.ref_slug }}
       
       - name: Build and Push Docker Image api
         uses: docker/build-push-action@v2
         with:  
           context: roles/api/files
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_api:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my_api:${{ github.ref_slug }}
       
